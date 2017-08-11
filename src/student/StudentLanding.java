@@ -54,9 +54,10 @@ public class StudentLanding
 					System.out.println("Login page loaded sucessfully...!");
 					driver.findElement(By.name("userid")).sendKeys(student.userID);
 					driver.findElement(By.name("password")).sendKeys(student.password);
+					Thread.sleep(1000);
 					driver.findElement(By.cssSelector("input[type=button]")).click();
-					Thread.sleep(2000);
-					// wait.until(ExpectedConditions.urlContains(student.profileURL));
+					//Thread.sleep(2000);
+					 wait.until(ExpectedConditions.urlContains(student.profileURL));
 					// instead of above method we should use thread if we are
 					// passing invalid credential to caught exception
 					if (driver.getCurrentUrl().equals(student.profileURL))
@@ -64,29 +65,50 @@ public class StudentLanding
 							System.out.println("User login successfuly");
 							wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[1]//div[1]/a/img")));
 							driver.findElement(By.xpath("//div[1]//div[1]/a/img")).click();
+							wait.until(ExpectedConditions.urlToBe(student.landingURL));
+							//Thread.sleep(5000);
+							
 							if (driver.getCurrentUrl().equals(student.landingURL)) {
 								if (driver.getTitle().contains("CareerClap")) {
 									System.out.println("landing page is loaded successful");
-									//wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//*[@id='cover-logo-box-3']/span")));
+									//wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[4]/span")));
 									Thread.sleep(5000);
 									
-									driver.findElement(By.cssSelector("#cover-logo-box-3")).click();
-								//	driver.findElement(By.xpath(".//*[@id='cover-logo-box-3']/span")).click();
-									wait.until(ExpectedConditions.urlContains(student.barclayStartURL));
+									driver.findElement(By.xpath("//div[4]/span")).click();
+									System.out.println("its here @1");
+									Thread.sleep(5000);
+									wait.until(ExpectedConditions.urlToBe(student.barclayStartURL));
 									if (driver.getCurrentUrl().equals(student.barclayStartURL)) {
 										if (driver.getTitle().contains("CareerClap")) {
 											System.out.println("Barclay start page ie PDF page is loaded successfuly.");
-											wait.until(ExpectedConditions.urlContains(student.barclayStartURL));
+											Thread.sleep(5000);
+											//wait.until(ExpectedConditions.urlContains(student.barclayStartURL));
+											 for (String handle : driver.getWindowHandles()) {
 
+												    driver.switchTo().window(handle);}
+											
 											for (int i = 1; i < 35; i++) {
 
 												System.out.println("reading pdf " + i);
 												String tempXpath = "//tr[" + i + "]//a";
-												driver.findElement(By.xpath(tempXpath)).sendKeys(Keys.CONTROL.ENTER);
-												Thread.sleep(1000);
+												
+												System.out.println(currentWindow);
+												driver.findElement(By.xpath(tempXpath)).click();
+												//driver.findElement(By.xpath(tempXpath)).sendKeys(Keys.CONTROL.ENTER);
+												String nextWindow= driver.getWindowHandle();
+												Thread.sleep(5000);
+												//System.out.println(currentWindow);
+											       if (!currentWindow.equals(nextWindow)) {
+												            driver.quit();
+												        	driver.switchTo().window(currentWindow);
+												        
+												    }
+
+												    
+												
 											}
 											Thread.sleep(1000);
-											driver.findElement(By.xpath("//div[2]/form//ul/li[2]//a[2]")).click();
+											driver.findElement(By.xpath("//a[2]")).click();
 											wait.until(ExpectedConditions
 													.urlContains(student.barclayspracticeInstructions));
 											if (driver.getCurrentUrl().equals(student.barclayspracticeInstructions)) {

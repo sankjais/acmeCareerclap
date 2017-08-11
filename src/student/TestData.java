@@ -11,7 +11,7 @@ public class TestData
 			updatePasswordURL = "http://acme.careerclap.com/#/ftupdatePassword",
 			profileURL = "http://acme.careerclap.com/#/userInfo",
 			landingURL = "http://acme.careerclap.com/#/studentLanding",
-			barclayStartURL = "http://acme.careerclap.com/#/barclayspracticeStart",
+			barclayStartURL = "http://acme.careerclap.com/#/beginYourJourney",
 			barclayspracticeInstructions = "http://acme.careerclap.com/#/barclayspracticeInstructions",
 			barclaysQuiz = "http://acme.careerclap.com/#/commonquiz", checkURL = "http://acme.careerclap.com/#/";
 
