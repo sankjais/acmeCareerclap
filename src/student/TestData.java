@@ -12,8 +12,10 @@ public class TestData
 			profileURL = "http://acme.careerclap.com/#/userInfo",
 			landingURL = "http://acme.careerclap.com/#/studentLanding",
 			barclayStartURL = "http://acme.careerclap.com/#/beginYourJourney",
-			barclayspracticeInstructions = "http://acme.careerclap.com/#/barclayspracticeInstructions",
-			barclaysQuiz = "http://acme.careerclap.com/#/commonquiz", checkURL = "http://acme.careerclap.com/#/";
+			practiceAssessmentInstructions = "http://acme.careerclap.com/#/barclayspracticeInstructions",
+			barclaysAssessmentInstructions ="http://acme.careerclap.com/#/beginYourJourneyInstructions",
+			barclaysQuiz = "http://acme.careerclap.com/#/commonquiz", checkURL = "http://acme.careerclap.com/#/",
+			barclaysCompletion="http://acme.careerclap.com/#/beginYourJourneyCompletion";
 
 	public static void main(String[] args)
 

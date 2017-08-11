@@ -3,9 +3,9 @@ package student;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriver.Window;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.UnreachableBrowserException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -111,17 +111,30 @@ public class StudentLanding
 											}
 											driver.switchTo().window(Parent_Window);
 											Thread.sleep(2000);
-											wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//li[2]/div//a[1]")));
+
+											WebElement element =
+
+													driver.findElement(By.xpath("//li[2]/div//a[1]"));
+
+											((JavascriptExecutor)
+
+											driver).executeScript("arguments[0].scrollIntoView();", element);
+											Thread.sleep(1000);
+
+											wait.until(ExpectedConditions
+													.visibilityOfAllElementsLocatedBy(By.xpath("//li[2]/div//a[1]")));
 											driver.findElement(By.xpath("//li[2]/div//a[1]")).click();
 											wait.until(ExpectedConditions
-													.urlContains(student.barclayspracticeInstructions));
-											if (driver.getCurrentUrl().equals(student.barclayspracticeInstructions)) {
+													.urlContains(student.barclaysAssessmentInstructions));
+											if (driver.getCurrentUrl().equals(student.barclaysAssessmentInstructions)) {
 												if (driver.getTitle().contains("CareerClap")) {
-													System.out
-															.println("Barclays Instruction page is loaded successfuly");
-													driver.findElement(By.xpath("//button123")).click();
+													System.out.println(
+															"Barclays Assessment Instruction page is loaded successfuly");
+													Thread.sleep(2000);
+													driver.findElement(By.xpath("//li[2]//button")).click();
 													wait.until(ExpectedConditions.urlContains(student.barclaysQuiz));
 													if (driver.getCurrentUrl().equals(student.barclaysQuiz)) {
+														System.out.println("Assessment loaded sucessfully");
 														for (int i = 1; i <= 20; i++) {
 															wait.until(ExpectedConditions
 																	.elementToBeClickable(By.xpath("//*[@id='1']")));
@@ -129,10 +142,35 @@ public class StudentLanding
 															wait.until(ExpectedConditions
 																	.elementToBeClickable(By.xpath("//form//a[2]/i")));
 															driver.findElement(By.xpath("//form//a[2]/i")).click();
+															System.out.println("Student- " + student.firstname
+																	+ "  is taking test");
+															Thread.sleep(500);
 														}
 														wait.until(ExpectedConditions.elementToBeClickable(
 																By.xpath(".//*[@id='exitExam']//a")));
 														driver.findElement(By.xpath(".//*[@id='exitExam']//a")).click();
+
+														element =
+
+																driver.findElement(By.xpath("//div[2]/button"));
+
+														((JavascriptExecutor)
+
+														driver).executeScript("arguments[0].scrollIntoView();",
+																element);
+														Thread.sleep(1000);
+
+														wait.until(ExpectedConditions
+																.elementToBeClickable(By.xpath("//div[2]/button")));
+														driver.findElement(By.xpath("//div[2]/button")).click();
+														System.out.println("Assessment completed and checking Q&A");
+														Thread.sleep(3000);
+														if(driver.getCurrentUrl().equalsIgnoreCase(student.barclaysCompletion))
+														{
+															System.out.println(student.firstname+" have completed Barclays Assessment...!");
+															Thread.sleep(1000);
+															driver.findElement(By.)
+														}
 
 													}
 												}
