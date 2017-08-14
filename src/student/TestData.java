@@ -11,11 +11,13 @@ public class TestData
 			updatePasswordURL = "http://acme.careerclap.com/#/ftupdatePassword",
 			profileURL = "http://acme.careerclap.com/#/userInfo",
 			landingURL = "http://acme.careerclap.com/#/studentLanding",
-			barclayStartURL = "http://acme.careerclap.com/#/beginYourJourney",
-			practiceAssessmentInstructions = "http://acme.careerclap.com/#/barclayspracticeInstructions",
+			barclayStartURL = "http://acme.careerclap.com/#/beginYourJourney",practiceStartURL = "http://acme.careerclap.com/#/practicetest",
+			practiceAssessmentInstructions = "http://acme.careerclap.com/#/practiceinstructions",
 			barclaysAssessmentInstructions ="http://acme.careerclap.com/#/beginYourJourneyInstructions",
-			barclaysQuiz = "http://acme.careerclap.com/#/commonquiz", checkURL = "http://acme.careerclap.com/#/",
-			barclaysCompletion="http://acme.careerclap.com/#/beginYourJourneyCompletion";
+			barclaysQuiz = "http://acme.careerclap.com/#/commonquiz",practiceQuiz = "http://acme.careerclap.com/#/commonquiz",
+			checkURL = "http://acme.careerclap.com/#/",
+			barclaysCompletion="http://acme.careerclap.com/#/beginYourJourneyCompletion",
+			practiceCompletion="http://acme.careerclap.com/#/practiceTestCompletion";
 
 	public static void main(String[] args)
 
@@ -77,7 +79,7 @@ public class TestData
 				// login.validLogin(testdata);
 				// passwordUpdate.updatePassword(testdata);
 				// profileUpdate.updateProfile(testdata);
-				landingTest.barclaysTest(testdata);
+				landingTest.tiles(testdata);
 
 			}
 

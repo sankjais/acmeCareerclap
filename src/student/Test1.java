@@ -3,7 +3,6 @@ package student;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
 
 public class Test1 {
 
@@ -22,8 +21,8 @@ public class Test1 {
 		
 		driver.findElement(By.id("gsr")).sendKeys(Keys.CONTROL,"t");
 		driver.get("https://www.google.co.in");
-		String wh1=driver.getWindowHandle();
-	    String cwh=null;
+		//String wh1=driver.getWindowHandle();
+	   // String cwh=null;
 	   /* while(wh1!=cwh)
 	    {   
 	    new Actions(driver).sendKeys(Keys.CONTROL).sendKeys(Keys.NUMPAD1).perform();
@@ -37,7 +36,7 @@ public class Test1 {
 	    
 	    
 	    
-	    String Parent_Window = driver.getWindowHandle();    
+	//    String Parent_Window = driver.getWindowHandle();    
         // Switching from parent window to child window   
        for (String Child_Window : driver.getWindowHandles())  
        {  
