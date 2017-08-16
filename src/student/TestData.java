@@ -11,13 +11,19 @@ public class TestData
 			updatePasswordURL = "http://acme.careerclap.com/#/ftupdatePassword",
 			profileURL = "http://acme.careerclap.com/#/userInfo",
 			landingURL = "http://acme.careerclap.com/#/studentLanding",
-			barclayStartURL = "http://acme.careerclap.com/#/beginYourJourney",practiceStartURL = "http://acme.careerclap.com/#/practicetest",
+			barclayStartURL = "http://acme.careerclap.com/#/beginYourJourney",
+			practiceStartURL = "http://acme.careerclap.com/#/practicetest",
+			corporateStartURL = "http://acme.careerclap.com/#/corporatetest",
 			practiceAssessmentInstructions = "http://acme.careerclap.com/#/practiceinstructions",
 			barclaysAssessmentInstructions ="http://acme.careerclap.com/#/beginYourJourneyInstructions",
-			barclaysQuiz = "http://acme.careerclap.com/#/commonquiz",practiceQuiz = "http://acme.careerclap.com/#/commonquiz",
+			corporateAssessmentInstructions ="http://acme.careerclap.com/#/corporateinstructions",
+			barclaysQuiz = "http://acme.careerclap.com/#/commonquiz",
+			practiceQuiz = "http://acme.careerclap.com/#/commonquiz",
+			corporateQuiz = "http://acme.careerclap.com/#/commonquiz",
 			checkURL = "http://acme.careerclap.com/#/",
 			barclaysCompletion="http://acme.careerclap.com/#/beginYourJourneyCompletion",
-			practiceCompletion="http://acme.careerclap.com/#/practiceTestCompletion";
+			practiceCompletion="http://acme.careerclap.com/#/practiceTestCompletion",
+			corporateCompletion="http://acme.careerclap.com/#/corporateTestCompletion";
 
 	public static void main(String[] args)
 
@@ -35,7 +41,7 @@ public class TestData
 			ExcelUtils dd;
 			// dd = new ExcelUtils("student.temp","Sheet2");
 
-			dd = new ExcelUtils("D:\\sanket data\\Careerclap data\\temp\\user.xlsx", "Sheet2");
+			dd = new ExcelUtils("D:\\SANKET DATA\\temp\\user.xlsx", "Sheet2");
 			System.out.println("The Row count is " + (dd.excel_get_rows() - 1));
 			System.out.println("The column count is " + dd.excel_get_columns());
 			int rows = dd.excel_get_rows(), cols = dd.excel_get_columns();

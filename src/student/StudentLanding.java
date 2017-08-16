@@ -7,9 +7,9 @@ public class StudentLanding
 	void tiles(TestData student)
 	{
 		
-		// BarclaysTest.barclays(student);
-		 PracticeTest.practice(student);
-		 
+		//BarclaysTest.barclays(student);
+		// PracticeTest.practice(student);
+		 CorporateTest.corporate(student);
 		
 	}
 
