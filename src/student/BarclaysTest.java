@@ -134,19 +134,14 @@ public class BarclaysTest {
 													System.out.println(
 															"Barclays Assessment Instruction page is loaded successfuly");
 													Thread.sleep(2000);
-													
-													
-													
+
 													element = driver.findElement(By.xpath("//li[2]//button"));
 
 													((JavascriptExecutor)
 
 													driver).executeScript("arguments[0].scrollIntoView();", element);
 													Thread.sleep(1000);
-													
-													
-													
-													
+
 													driver.findElement(By.xpath("//li[2]//button")).click();
 													wait.until(ExpectedConditions.urlContains(student.barclaysQuiz));
 													if (driver.getCurrentUrl().equals(student.barclaysQuiz)) {
@@ -179,7 +174,8 @@ public class BarclaysTest {
 														wait.until(ExpectedConditions
 																.elementToBeClickable(By.xpath("//div[2]/button")));
 														driver.findElement(By.xpath("//div[2]/button")).click();
-														System.out.println("Barclays Assessment completed and checking Q&A");
+														System.out.println(
+																"Barclays Assessment completed and checking Q&A");
 														Thread.sleep(3000);
 														if (driver.getCurrentUrl()
 																.equalsIgnoreCase(student.barclaysCompletion)) {
@@ -212,6 +208,7 @@ public class BarclaysTest {
 							System.out.println(element2.getText());
 							System.out.println(
 									"SMOKE FAIL- due to user unable to login with valid username and password.");
+							flag = 1;
 						}
 
 					Thread.sleep(1000);
@@ -231,16 +228,16 @@ public class BarclaysTest {
 			driver.quit();
 			endtime = System.currentTimeMillis();
 			if (flag == 0) {
-				System.out.println("total time for execution process till barclaysStartPage = "
-						+ (endtime - starttime) / 6000 + " SECONDS");
+				System.out.println(
+						"total time for completing barclays test  = " + (endtime - starttime) / 6000 + " SECONDS");
 			} else {
-				System.out.println("total time for execution process till barclaysStartPage but fail's is = "
+				System.out.println("total time for competing barclays test but fail's is = "
 						+ (endtime - starttime) / 6000 + " SECONDS");
 
 			}
 
 		}
-		//return flag;
+		// return flag;
 	}
 
 	//// *********

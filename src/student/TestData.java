@@ -23,7 +23,11 @@ public class TestData
 			checkURL = "http://acme.careerclap.com/#/",
 			barclaysCompletion="http://acme.careerclap.com/#/beginYourJourneyCompletion",
 			practiceCompletion="http://acme.careerclap.com/#/practiceTestCompletion",
-			corporateCompletion="http://acme.careerclap.com/#/corporateTestCompletion";
+			corporateCompletion="http://acme.careerclap.com/#/corporateTestCompletion",
+			dostAppointment="http://acme.careerclap.com/#/bookappointment",
+			chooseDost="http://acme.careerclap.com/#/chooseDost",
+			chooseDostTime="http://acme.careerclap.com/#/chooseTime",
+			appointmentBooked="http://acme.careerclap.com/#/countDown";
 
 	public static void main(String[] args)
 

@@ -82,7 +82,7 @@ public class GTTLogin
 
 			Thread.sleep(1000);
 
-		} // try block closed
+		} // try block closed.
 
 		catch (InterruptedException e) {
 			// System.err.println(e);

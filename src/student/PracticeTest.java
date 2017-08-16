@@ -15,15 +15,15 @@ public class PracticeTest {
 
 	static int flag = 0;
 
-	public static int practice(TestData student) {
+	public static void practice(TestData student) {
 
 		long starttime = System.currentTimeMillis(), endtime;
 		WebDriver driver = CreateDrivers.chrome();
 		WebDriverWait wait = new WebDriverWait(driver, 3000);
-		/*if (barclaysStatus == 0) {
-			driver.close();
-			System.out.println("Student had not completed Barclays test");
-		}*/
+		/*
+		 * if (barclaysStatus == 0) { driver.close();
+		 * System.out.println("Student had not completed Barclays test"); }
+		 */
 
 		try {
 
@@ -89,9 +89,9 @@ public class PracticeTest {
 											System.out.println("practice start page is loaded successfully.");
 											Thread.sleep(2000);
 											// wait.until(ExpectedConditions.urlContains(student.barclayStartURL));
-											
-											int max	= Integer.parseInt(driver.findElement(By.xpath("//tr/td[2]")).getText());
 
+											int max = Integer
+													.parseInt(driver.findElement(By.xpath("//tr/td[2]")).getText());
 
 											WebElement element =
 
@@ -118,20 +118,12 @@ public class PracticeTest {
 
 													driver).executeScript("arguments[0].scrollIntoView();", element);
 													Thread.sleep(1000);
-													
-													
-													
-													
-													
+
 													driver.findElement(By.xpath("//li[2]/div//a[1]")).click();
 													wait.until(ExpectedConditions.urlContains(student.practiceQuiz));
 													if (driver.getCurrentUrl().equals(student.practiceQuiz)) {
 														System.out.println("Practice Assessment loaded sucessfully");
-														
-													
-														
-														
-														
+
 														for (int i = 1; i <= max; i++) {
 															wait.until(ExpectedConditions
 																	.elementToBeClickable(By.xpath("//*[@id='1']")));
@@ -160,7 +152,8 @@ public class PracticeTest {
 														wait.until(ExpectedConditions
 																.elementToBeClickable(By.xpath("//div[2]/button")));
 														driver.findElement(By.xpath("//div[2]/button")).click();
-														System.out.println("Practice Assessment completed and checking Q&A");
+														System.out.println(
+																"Practice Assessment completed and checking Q&A");
 														Thread.sleep(3000);
 														if (driver.getCurrentUrl()
 																.equalsIgnoreCase(student.practiceCompletion)) {
@@ -193,6 +186,7 @@ public class PracticeTest {
 							System.out.println(element2.getText());
 							System.out.println(
 									"SMOKE FAIL- due to user unable to login with valid username and password.");
+							flag = 1;
 						}
 
 					Thread.sleep(1000);
@@ -210,10 +204,13 @@ public class PracticeTest {
 		} finally {
 			driver.quit();
 			endtime = System.currentTimeMillis();
-			System.out.println("total time for execution process till barclaysStartPage = "
-					+ (endtime - starttime) / 6000 + " SECONDS");
+			if (flag == 0) {
+				System.out.println(
+						"total time for competion of practice test  = " + (endtime - starttime) / 6000 + " SECONDS");
+			} else {
+				System.out.println("total time for completing practice test  but fail's is = "
+						+ (endtime - starttime) / 6000 + " SECONDS");
+			}
 		}
-		return flag;
 	}
-
 }

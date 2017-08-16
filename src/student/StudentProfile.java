@@ -87,17 +87,15 @@ public class StudentProfile
 							// calendar- here error may occur because we were
 							// sending date directly, not able to select now
 							Thread.sleep(2000);
-							
-							if(student.DOB.equalsIgnoreCase(driver.findElement(By.cssSelector("input[placeholder='Date of Birth']")).getText()))
-							{
-							System.out.println("profile contain same DOB.");	
-							}
-							else
-							{
+
+							if (student.DOB.equalsIgnoreCase(driver
+									.findElement(By.cssSelector("input[placeholder='Date of Birth']")).getText())) {
+								System.out.println("profile contain same DOB.");
+							} else {
 								SetData.setDOB(driver, student);
 
 							}
-						//	System.out.println(driver.findElement(By.xpath("//div[1]//div[2]/ul//div[6]//input")).getText());
+							// System.out.println(driver.findElement(By.xpath("//div[1]//div[2]/ul//div[6]//input")).getText());
 							System.out.println("DOB - " + student.DOB);
 							// System.out.println("execution done");
 							Thread.sleep(1000);
@@ -165,24 +163,20 @@ public class StudentProfile
 							// col dates
 
 							SetData.setCollegeFromDate(driver, student);
-							
+
 							System.out.println("Institue attended From - " + student.college_from_date
 									+ " Institute completed Till " + student.college_to_date);
 							SetData.setCollegeToDate(driver, student);
-							
-							if(driver.findElement(By.cssSelector("input[type='checkbox']")).isSelected())
-							{
-							
-							}
-							else
-							{	
+
+							if (driver.findElement(By.cssSelector("input[type='checkbox']")).isSelected()) {
+
+							} else {
 								driver.findElement(By.cssSelector("input[type='checkbox']")).click();
-								
+
 							}
 							Thread.sleep(300);
 							driver.findElement(By.cssSelector("input[type='button']")).click();
 							Thread.sleep(6000);
-							
 
 							if (driver.getCurrentUrl().equals(student.landingURL)) {
 								System.out.println("profile updated successfull");
@@ -228,11 +222,10 @@ public class StudentProfile
 			driver.quit();
 			endtime = System.currentTimeMillis();
 			if (flag == 0) {
-				System.out.println("total time for execution process of updating profile = "
-						+ (endtime - starttime) / 6000 + " SECONDS");
+				System.out.println("total time for updating profile = " + (endtime - starttime) / 6000 + " SECONDS");
 			} else {
-				System.out.println("total time for execution process of updating profile but fail's is = "
-						+ (endtime - starttime) / 6000 + " SECONDS");
+				System.out.println(
+						"total time for updating profile but fail's is = " + (endtime - starttime) / 6000 + " SECONDS");
 
 			}
 		}

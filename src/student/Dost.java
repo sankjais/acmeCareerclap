@@ -3,7 +3,6 @@ package student;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,11 +10,15 @@ import org.openqa.selenium.remote.UnreachableBrowserException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class CorporateTest {
+public class Dost
+
+{
 
 	static int flag = 0;
 
-	public static void corporate(TestData student) {
+	public static void bookMyAppointment(TestData student)
+
+	{
 
 		long starttime = System.currentTimeMillis(), endtime;
 		WebDriver driver = CreateDrivers.chrome();
@@ -81,121 +84,117 @@ public class CorporateTest {
 									// wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[4]/span")));
 									Thread.sleep(5000);
 
-									driver.findElement(By.xpath("//div[5]/span")).click();
+									driver.findElement(By.xpath("//div[7]/span")).click();
 									Thread.sleep(2000);
-									wait.until(ExpectedConditions.urlToBe(student.corporateStartURL));
-									if (driver.getCurrentUrl().equals(student.corporateStartURL)) {
+									wait.until(ExpectedConditions.urlToBe(student.dostAppointment));
+									if (driver.getCurrentUrl().equals(student.dostAppointment)) {
 										if (driver.getTitle().contains("CareerClap")) {
-											System.out.println("Employabilty start page is loaded successfully.");
+											System.out.println(
+													"Dost Book My Appointment start page is loaded successfully.");
 											Thread.sleep(2000);
 											// wait.until(ExpectedConditions.urlContains(student.barclayStartURL));
 
-											int max = Integer
-													.parseInt(driver.findElement(By.xpath("//tr/td[2]")).getText());
-
-											WebElement element =
-
-													driver.findElement(By.xpath("//li[2]/div//a[1]"));
-
-											((JavascriptExecutor)
-
-											driver).executeScript("arguments[0].scrollIntoView();", element);
-											Thread.sleep(1000);
-
 											wait.until(ExpectedConditions
-													.visibilityOfAllElementsLocatedBy(By.xpath("//li[2]/div//a[1]")));
-											driver.findElement(By.xpath("//li[2]/div//a[1]")).click();
-											wait.until(ExpectedConditions
-													.urlContains(student.corporateAssessmentInstructions));
-											if (driver.getCurrentUrl()
-													.equals(student.corporateAssessmentInstructions)) {
+													.visibilityOfAllElementsLocatedBy(By.xpath("//div[2]/form//a")));
+											driver.findElement(By.xpath("//div[2]/form//a")).click();
+											wait.until(ExpectedConditions.urlContains(student.chooseDost));
+											if (driver.getCurrentUrl().equals(student.chooseDost)) {
 												if (driver.getTitle().contains("CareerClap")) {
-													System.out.println(
-															"Employabilty Assessment Instruction page is loaded successfuly");
-													Thread.sleep(2000);
-													element = driver.findElement(By.xpath("//div[2]/button"));
+													System.out.println("Choose dost page is loaded successfuly");
+													Thread.sleep(3000);
+													driver.findElement(By.xpath("//div[1]/select")).click();
+													Thread.sleep(500);
+													driver.findElement(By.xpath("//div[1]/select/option[2]")).click();
+													Thread.sleep(500);
+													driver.findElement(By.xpath("//div[2]/select")).click();
+													Thread.sleep(500);
+													driver.findElement(By.xpath("//div[2]/select/option[2]")).click();
+													Thread.sleep(500);
+													driver.findElement(By.xpath("//textarea")).click();
+													Thread.sleep(500);
+													driver.findElement(By.xpath("//textarea")).sendKeys(
+															"Hi dost, what I should do to place in IT industry as a BA");
+													Thread.sleep(500);
+													driver.findElement(By.xpath("//div[5]/select")).click();
+													Thread.sleep(500);
+													driver.findElement(By.xpath("//div[5]/select/option[2]")).click();
+													Thread.sleep(500);
+													driver.findElement(By.xpath("//div[1]/input")).click();
 
-													((JavascriptExecutor)
-
-													driver).executeScript("arguments[0].scrollIntoView();", element);
-													Thread.sleep(1000);
-
-													driver.findElement(By.xpath("//div[2]/button")).click();
-													wait.until(ExpectedConditions.urlContains(student.corporateQuiz));
-													if (driver.getCurrentUrl().equals(student.corporateQuiz)) {
-														System.out
-																.println("Employablity Assessment loaded sucessfully");
-
-														for (int i = 1; i <= max; i++) {
-															wait.until(ExpectedConditions
-																	.elementToBeClickable(By.xpath("//*[@id='1']")));
-															driver.findElement(By.xpath(".//*[@id='1']")).click();
-															wait.until(ExpectedConditions
-																	.elementToBeClickable(By.xpath("//form//a[2]/i")));
-															driver.findElement(By.xpath("//form//a[2]/i")).click();
-															System.out.println("Student- " + student.firstname
-																	+ "  is taking Employabilty test");
-															Thread.sleep(500);
-														}
-														wait.until(ExpectedConditions.elementToBeClickable(
-																By.xpath(".//*[@id='exitExam']//a")));
-														driver.findElement(By.xpath(".//*[@id='exitExam']//a")).click();
-
-														element =
-
-																driver.findElement(By.xpath("//div[2]/button"));
-
-														((JavascriptExecutor)
-
-														driver).executeScript("arguments[0].scrollIntoView();",
-																element);
-														Thread.sleep(1000);
+													wait.until(ExpectedConditions.urlContains(student.chooseDostTime));
+													if (driver.getCurrentUrl().equals(student.chooseDostTime)) {
+														System.out.println("dost time slot page is loaded sucessfully");
 
 														wait.until(ExpectedConditions
-																.elementToBeClickable(By.xpath("//div[2]/button")));
-														driver.findElement(By.xpath("//div[2]/button")).click();
-														System.out.println(
-																"Employabilty Assessment completed and checking Q&A");
-														Thread.sleep(3000);
+																.elementToBeClickable(By.xpath("//div[1]/label/i")));
+														driver.findElement(By.xpath("//div[1]/label/i")).click();
+														Thread.sleep(1000);
+														driver.findElement(By.xpath("//div[5]//button")).click();
+														Thread.sleep(1000);
+														driver.findElement(By.xpath("//div[2]//div[2]/button[1]"))
+																.click();
+														wait.until(
+																ExpectedConditions.urlToBe(student.appointmentBooked));
 														if (driver.getCurrentUrl()
-																.equalsIgnoreCase(student.corporateCompletion)) {
-															System.out.println(student.firstname
-																	+ " have completed Employabilty Assessment...!");
-															Thread.sleep(1000);
-															driver.findElement(
-																	By.xpath(".//*[@id='dropdowndiv']/button")).click();
-															Thread.sleep(500);
-															driver.findElement(By.xpath(".//*[@id='menu1']/li[5]/a"))
-																	.click();
-															Thread.sleep(2000);
+																.equalsIgnoreCase(student.appointmentBooked)) {
+															if (driver.getTitle().contains("CareerClap")) {
+																Thread.sleep(500);
+																System.out.println(
+																		"Appointment Booked with  --  " + driver
+																				.findElement(By
+																						.xpath("//div[2]/form/div/div[1]/div[2]"))
+																				.getText());
+																Thread.sleep(2000);
+																System.out.println(driver
+																		.findElement(By.xpath("//div[2]/form//h4[1]"))
+																		.getText());
+																Thread.sleep(2000);
+																driver.findElement(
+																		By.xpath(".//*[@id='dropdowndiv']/button"))
+																		.click();
+																Thread.sleep(1000);
+																driver.findElement(
+																		By.xpath(".//*[@id='menu1']/li[5]/a")).click();
+																Thread.sleep(2000);
+
+															}
+
 														}
 
 													}
+
 												}
+
 											}
 
 										}
+
 									}
+
 								}
+
 							}
-							Thread.sleep(10000);
 
-						} else {
-
-							WebElement element2 = driver.findElement(By.xpath("//form/div[3]/div"));
-							// relative-path
-							// //div[1]//div[1]/div[3]/form/div[3]/div
-							System.out.println(element2.getText());
-							System.out.println(
-									"SMOKE FAIL- due to user unable to login with valid username and password.");
-							flag = 1;
 						}
-
-					Thread.sleep(1000);
-					// driver.quit();
 				}
+
+				else {
+
+					WebElement element2 = driver.findElement(By.xpath("//form/div[3]/div"));
+					// relative-path
+					// //div[1]//div[1]/div[3]/form/div[3]/div
+					System.out.println(element2.getText());
+					System.out.println("SMOKE FAIL- due to user unable to login with valid username and password.");
+					flag = 1;
+				}
+
+				Thread.sleep(1000);
+				// driver.quit();
 			}
-		} catch (InterruptedException e) {
+
+		} catch (
+
+		InterruptedException e) {
 			// System.err.println(e);
 			System.out.println("exception occured to to thread synchronization failed");
 		} catch (NoSuchElementException e) {
@@ -208,10 +207,11 @@ public class CorporateTest {
 			endtime = System.currentTimeMillis();
 			if (flag == 0) {
 				System.out.println(
-						"total time for competion of corporate test  = " + (endtime - starttime) / 6000 + " SECONDS");
+						"total time for booking appointment is = " + (endtime - starttime) / 6000 + " SECONDS");
 			} else {
-				System.out.println("total time for completing corporate test  but fail's is = "
-						+ (endtime - starttime) / 6000 + " SECONDS");
+				System.out.println("total time for booking appointment but fail's is = " + (endtime - starttime) / 6000
+						+ " SECONDS");
+
 			}
 		}
 

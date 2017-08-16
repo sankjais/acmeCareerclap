@@ -9,10 +9,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SetData {
-	
-	
-	
-
 
 	public static int setDegree(String degree) {
 		int degreeCode = 0;
@@ -305,7 +301,7 @@ public class SetData {
 
 	{
 
-		int  YYYY;
+		int YYYY;
 		String temp, MM;
 		temp = student.working_to_date;
 		MM = temp.substring(0, 2);
@@ -413,7 +409,7 @@ public class SetData {
 		YYYY = Integer.parseInt(temp.substring(6, 10));
 		tempDriver.findElement(By.name("fromDate0")).click();
 		Thread.sleep(500);
-		//tempDriver.findElement(By.xpath("//div[2]//ul/div[1]/div/div[4]/div[1]//input")).click();
+		// tempDriver.findElement(By.xpath("//div[2]//ul/div[1]/div/div[4]/div[1]//input")).click();
 		Thread.sleep(500);
 		tempDriver.findElement(By.xpath("//div[2]/table/thead/tr[1]/th[2]")).click();
 		Thread.sleep(300);
@@ -503,19 +499,18 @@ public class SetData {
 
 	}
 
-
 	static void setCollegeToDate(WebDriver tempDriver, TestData student) throws InterruptedException
 
 	{
 
-		int  YYYY;
+		int YYYY;
 		String temp, MM;
 		temp = student.college_to_date;
 		MM = temp.substring(0, 2);
 		YYYY = Integer.parseInt(temp.substring(6, 10));
 		tempDriver.findElement(By.name("toDate0")).click();
 		Thread.sleep(500);
-		//tempDriver.findElement(By.xpath("//div[4]//div[4]/div[2]//input")).click();
+		// tempDriver.findElement(By.xpath("//div[4]//div[4]/div[2]//input")).click();
 		Thread.sleep(500);
 		tempDriver.findElement(By.xpath("//div[4]/div[2]//thead//th[2]")).click();
 		Thread.sleep(300);
