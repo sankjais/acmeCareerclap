@@ -27,7 +27,9 @@ public class TestData
 			dostAppointment="http://acme.careerclap.com/#/bookappointment",
 			chooseDost="http://acme.careerclap.com/#/chooseDost",
 			chooseDostTime="http://acme.careerclap.com/#/chooseTime",
-			appointmentBooked="http://acme.careerclap.com/#/countDown";
+			appointmentBooked="http://acme.careerclap.com/#/countDown",
+			resources="http://acme.careerclap.com/#/student_resources",
+			careers="http://acme.careerclap.com/#/Career";
 
 	public static void main(String[] args)
 
