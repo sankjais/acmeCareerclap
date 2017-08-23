@@ -1,6 +1,8 @@
 package admin;
 
-public final class Enum {
+public final class State {
+	
+
 
 	static String AndhraPradesh = "Andhra Pradesh", ArunachalPradesh = "Arunachal Pradesh",
 			AndamaAndNicobar = "Andaman and Nicobar", Assam = "Assam", Bihar = "Bihar", Chhattisgarh = "Chhattisgarh",
@@ -16,5 +18,6 @@ public final class Enum {
 	
 	
 
-}
 
+
+}

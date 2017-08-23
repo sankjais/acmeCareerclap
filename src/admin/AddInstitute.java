@@ -1,7 +1,11 @@
 package admin;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.InvalidArgumentException;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
+import org.openqa.selenium.remote.UnreachableBrowserException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -14,13 +18,15 @@ public class AddInstitute {
 	static void add(WebDriver driver, String Institute, String city, String state) throws InterruptedException {
 		
 		long starttime = System.currentTimeMillis();
-		 long endtime=0;
+		long endtime = 0;
 		try {
 			
 			WebDriverWait wait = new WebDriverWait(driver, 5000);
 			driver.findElement(By.id("collegeName")).sendKeys(Institute);
 			Thread.sleep(1000);
-			driver.findElement(By.id("collegeCity")).sendKeys(city);
+			driver.findElement(By.xpath("//div[1]/div/div[2]/div/div/input")).click();
+			Thread.sleep(500);
+			driver.findElement(By.xpath("//div[1]/div/div[2]/div/div/input")).sendKeys(city);
 			Thread.sleep(1000);
 
 			int stateCode = 0;
@@ -134,7 +140,7 @@ public class AddInstitute {
 				stateCode = 37;
 				break;
 			default:
-				System.out.println("Invalid Enum selected");
+				System.out.println("Invalid State selected");
 				break;
 
 			}
@@ -143,17 +149,47 @@ public class AddInstitute {
 			driver.findElement(By.xpath("//div[3]/div/div/select")).click();
 			Thread.sleep(1000);
 			driver.findElement(By.xpath(tempState)).click();
+			Thread.sleep(1000);
+			driver.findElement(By.xpath("//form/div[2]//button[1]")).click();
+			
 
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[3]//span/span/span")));
 			if (driver.findElement(By.xpath("//div[3]//span/span/span")).getText()
-					.equalsIgnoreCase("Institute Saved Successfully")) {
+					.equalsIgnoreCase(Institute+"  Institute Saved Successfully.....!")) {
 				System.out.println("Institute Saved Successfully");
+			}
+			else{
+				System.out.println("failed to add institute");
+				flag=false;
 			}
 		} catch (InterruptedException e) {
 			// TODO: handle exception
 			System.out.println("Failed to add new institue");
 			flag = false;
 		}
+		
+		catch (NoSuchElementException e) {
+			System.out.println(
+					"you had used some drivers elements, which is wrong in syntax or not in browser.  -  NoSuchElementException");
+			flag = false;
+			// TODO: handle exception
+		} catch (UnreachableBrowserException e) {
+			System.out.println(
+					"oops- fail to load website- check your network connection or firewall setting  -  UnreachableBrowserException");
+			flag = false;
+
+			// TODO: handle exception
+		} catch (InvalidArgumentException e) {
+			System.out.println("Expected [object Undefined] undefined to be a string   - InvalidArgumentException");
+			flag = false;
+
+		} catch (WebDriverException e) {
+			// TODO: handle exception
+			System.out.println("unknown error: Element- WebDriverException");
+			flag = false;
+		}
+		
+		
 
 		finally {
 			driver.quit();

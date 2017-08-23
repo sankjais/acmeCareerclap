@@ -61,7 +61,9 @@ public class Dashboard {
 					System.out.println("Admin login successfully");
 					Thread.sleep(5000);
 
-					AddInstitute.add(driver, admin.instituteName, admin.instituteCity, admin.instituteState);
+					//AddInstitute.add(driver, admin.instituteName, admin.instituteCity, admin.instituteState);
+					AddDost.addDost(driver,admin.dostfname, admin.dostlname, admin.dostemail, admin.dostContact,
+							admin.dostCategory, admin.dostStatus, admin.aboutDost);
 				}
 
 			}

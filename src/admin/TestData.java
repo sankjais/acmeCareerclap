@@ -1,7 +1,5 @@
 package admin;
 
-
-
 // USE ENUM FOR STATE-
 
 public class TestData {
@@ -9,8 +7,11 @@ public class TestData {
 	String userID = "gtt_admin", password = "password", fpassword = "123456",
 			LoginURL = "http://acme.careerclap.com/#/adminLogin",
 			updatePasswordURL = "http://acme.careerclap.com/#/changePassword",
-			dashboardURL = "http://acme.careerclap.com/#/admindashboard",
-			instituteName="JD College", instituteCity="Pune", instituteState=Enum.Maharashtra;
+			dashboardURL = "http://acme.careerclap.com/#/admindashboard", instituteName = "JD College",
+			instituteCity = "Pune", instituteState = State.Maharashtra, dostfname = "Ramdas", dostlname = "Shukla",
+			dostemail = "ramdas.shukla@gtt.com", dostCategory = Categoris.fitnessdost, dostContact = "0246528975",
+			dostStatus = Status.active,
+			aboutDost = "Hi, this is Ramdas your Dost..! I am here to guide you regarding diet, fitness, health and all, just book and appointment with me I will call for help.";
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -19,7 +20,7 @@ public class TestData {
 		try {
 
 			TestData admin = new TestData();
-			//UpdatePassword.updatePassword(admin);
+			// UpdatePassword.updatePassword(admin);
 			Dashboard adash = new Dashboard();
 			adash.testDashboard(admin);
 
