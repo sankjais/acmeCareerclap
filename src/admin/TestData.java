@@ -4,7 +4,7 @@ package admin;
 
 public class TestData {
 
-	String userID = "gtt_admin", password = "password", fpassword = "123456",
+	String userID = "", password = "", fpassword = "123456",
 			LoginURL = "http://acme.careerclap.com/#/adminLogin",
 			updatePasswordURL = "http://acme.careerclap.com/#/changePassword",
 			dashboardURL = "http://acme.careerclap.com/#/admindashboard", instituteName = "JD College",

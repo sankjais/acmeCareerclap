@@ -1,5 +1,6 @@
 package admin;
 
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.InvalidArgumentException;
 import org.openqa.selenium.NoSuchElementException;
@@ -19,7 +20,7 @@ public class Dashboard {
 		driver.get(admin.LoginURL);
 		driver.navigate().to(admin.LoginURL);
 		driver.manage().window().maximize();
-		WebDriverWait wait = new WebDriverWait(driver, 5000);
+		WebDriverWait wait = new WebDriverWait(driver, 10000);
 
 		try {
 
@@ -54,15 +55,15 @@ public class Dashboard {
 
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//form/input")));
 			driver.findElement(By.xpath("//form/input")).click();
-
-			Thread.sleep(3000);
+			wait.until(ExpectedConditions.urlToBe(admin.dashboardURL));
+			
 			if (driver.getCurrentUrl().equalsIgnoreCase(admin.dashboardURL)) {
 				if (driver.getTitle().contains("CareerClap")) {
 					System.out.println("Admin login successfully");
-					Thread.sleep(5000);
+					Thread.sleep(3000);
 
-					//AddInstitute.add(driver, admin.instituteName, admin.instituteCity, admin.instituteState);
-					AddDost.addDost(driver,admin.dostfname, admin.dostlname, admin.dostemail, admin.dostContact,
+					//flag=AddInstitute.add(driver, admin.instituteName, admin.instituteCity, admin.instituteState);
+					flag=AddDost.addDost(driver,admin.dostfname, admin.dostlname, admin.dostemail, admin.dostContact,
 							admin.dostCategory, admin.dostStatus, admin.aboutDost);
 				}
 

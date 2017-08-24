@@ -15,7 +15,7 @@ public class AddInstitute {
 	 
 
 
-	static void add(WebDriver driver, String Institute, String city, String state) throws InterruptedException {
+	static boolean add(WebDriver driver, String Institute, String city, String state) throws InterruptedException {
 		
 		long starttime = System.currentTimeMillis();
 		long endtime = 0;
@@ -155,8 +155,10 @@ public class AddInstitute {
 
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[3]//span/span/span")));
 			if (driver.findElement(By.xpath("//div[3]//span/span/span")).getText()
-					.equalsIgnoreCase(Institute+"  Institute Saved Successfully.....!")) {
-				System.out.println("Institute Saved Successfully");
+					.equalsIgnoreCase("Institute Saved Successfully")) {
+				System.out.println(Institute +"Institute Saved Successfully");
+				
+				
 			}
 			else{
 				System.out.println("failed to add institute");
@@ -202,6 +204,7 @@ public class AddInstitute {
 						+ (endtime - starttime) / 6000 + " SECONDS");
 			}
 		}
+		return flag;
 
 	}
 

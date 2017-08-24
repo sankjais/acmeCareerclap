@@ -7,13 +7,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.remote.UnreachableBrowserException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Sleeper;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AddDost {
 	static boolean flag = true;
 
-	static void addDost(WebDriver driver, String fname, String lname, String email, String number, String category,
+	static boolean addDost(WebDriver driver, String fname, String lname, String email, String number, String category,
 			String status, String profileDescription) throws InterruptedException {
 
 		long starttime = System.currentTimeMillis();
@@ -98,6 +97,49 @@ public class AddDost {
 
 			driver.findElement(By.xpath("//textarea")).sendKeys(profileDescription);
 			Thread.sleep(1000);
+			
+			
+			driver.findElement(By.xpath("//div[2]//form/ul/li[2]")).click();
+			Thread.sleep(1000);
+			
+			//tr[2]/td[3]/select
+			
+			for(int i=2;i<7;i++)
+			{	
+				
+				driver.findElement(By.xpath("//tr["+i+"]/td[3]/select")).click();
+				Thread.sleep(1000);
+
+				
+				driver.findElement(By.xpath("//tr["+i+"]/td[3]/select/option[6]")).click();
+				Thread.sleep(500);
+				
+				driver.findElement(By.xpath("//tr["+i+"]/td[4]/select")).click();
+				Thread.sleep(1000);
+				
+				
+				driver.findElement(By.xpath("//tr["+i+"]/td[4]/select/option[17]")).click();
+				Thread.sleep(500);
+				
+			}
+
+			Thread.sleep(1000);
+			driver.findElement(By.xpath("//div[2]/button[2]")).click();
+			
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[3]/ul/li/div//span")));
+			if (driver.findElement(By.xpath("//div[3]/ul/li/div//span")).getText()
+					.equalsIgnoreCase("Dost Created Successfully")) {
+				System.out.println("Dost "+fname+" "+ lname+" with Username "+email +" added successfully");
+				Thread.sleep(2000);
+				
+				
+			}
+			else{
+				System.out.println("failed to add dost");
+				flag=false;
+			}
+			
+			//div[3]/ul/li/div//span
 
 		}
 
@@ -133,5 +175,8 @@ public class AddDost {
 						+ " SECONDS");
 			}
 		}
+		return flag;
+		
 	}
+	
 }
