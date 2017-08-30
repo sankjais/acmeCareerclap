@@ -15,32 +15,30 @@ public class TestData
 			practiceStartURL = "http://acme.careerclap.com/#/practicetest",
 			corporateStartURL = "http://acme.careerclap.com/#/corporatetest",
 			practiceAssessmentInstructions = "http://acme.careerclap.com/#/practiceinstructions",
-			barclaysAssessmentInstructions ="http://acme.careerclap.com/#/beginYourJourneyInstructions",
-			corporateAssessmentInstructions ="http://acme.careerclap.com/#/corporateinstructions",
+			barclaysAssessmentInstructions = "http://acme.careerclap.com/#/beginYourJourneyInstructions",
+			corporateAssessmentInstructions = "http://acme.careerclap.com/#/corporateinstructions",
 			barclaysQuiz = "http://acme.careerclap.com/#/commonquiz",
 			practiceQuiz = "http://acme.careerclap.com/#/commonquiz",
-			corporateQuiz = "http://acme.careerclap.com/#/commonquiz",
-			checkURL = "http://acme.careerclap.com/#/",
-			barclaysCompletion="http://acme.careerclap.com/#/beginYourJourneyCompletion",
-			practiceCompletion="http://acme.careerclap.com/#/practiceTestCompletion",
-			corporateCompletion="http://acme.careerclap.com/#/corporateTestCompletion",
-			dostAppointment="http://acme.careerclap.com/#/bookappointment",
-			chooseDost="http://acme.careerclap.com/#/chooseDost",
-			chooseDostTime="http://acme.careerclap.com/#/chooseTime",
-			appointmentBooked="http://acme.careerclap.com/#/countDown",
-			resources="http://acme.careerclap.com/#/student_resources",
-			careers="http://acme.careerclap.com/#/Career";
+			corporateQuiz = "http://acme.careerclap.com/#/commonquiz", checkURL = "http://acme.careerclap.com/#/",
+			barclaysCompletion = "http://acme.careerclap.com/#/beginYourJourneyCompletion",
+			practiceCompletion = "http://acme.careerclap.com/#/practiceTestCompletion",
+			corporateCompletion = "http://acme.careerclap.com/#/corporateTestCompletion",
+			dostAppointment = "http://acme.careerclap.com/#/bookappointment",
+			chooseDost = "http://acme.careerclap.com/#/chooseDost",
+			chooseDostTime = "http://acme.careerclap.com/#/chooseTime",
+			appointmentBooked = "http://acme.careerclap.com/#/countDown",
+			resources = "http://acme.careerclap.com/#/student_resources",
+			careers = "http://acme.careerclap.com/#/Career";
 
 	public static void main(String[] args)
 
 	{
-		long starttime = System.currentTimeMillis(), endtime;
-		TestData testdata = new TestData();
-		// GTTLogin login= new GTTLogin();
-		// UpdatePassword passwordUpdate = new UpdatePassword();
-		// StudentProfile profileUpdate = new StudentProfile();
-
-		StudentLanding landingTest = new StudentLanding();
+		 long starttime = System.currentTimeMillis(), endtime;
+		 TestData testdata = new TestData();
+		 GTTLogin login= new GTTLogin();
+		 UpdatePassword passwordUpdate = new UpdatePassword();
+		 StudentProfile profileUpdate = new StudentProfile();
+		 StudentLanding landingTest = new StudentLanding();
 
 		try {
 
@@ -90,8 +88,8 @@ public class TestData
 
 				// login.validLogin(testdata);
 				// passwordUpdate.updatePassword(testdata);
-				// profileUpdate.updateProfile(testdata);
-				landingTest.tiles(testdata);
+				 profileUpdate.updateProfile(testdata);
+				//landingTest.tiles(testdata);
 
 			}
 

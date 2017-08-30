@@ -4,12 +4,12 @@ package admin;
 
 public class TestData {
 
-	String userID = "", password = "", fpassword = "123456",
+	String userID = "gtt_admin", password = "password", fpassword = "123456",
 			LoginURL = "http://acme.careerclap.com/#/adminLogin",
 			updatePasswordURL = "http://acme.careerclap.com/#/changePassword",
 			dashboardURL = "http://acme.careerclap.com/#/admindashboard", instituteName = "JD College",
 			instituteCity = "Pune", instituteState = State.Maharashtra, dostfname = "Ramdas", dostlname = "Shukla",
-			dostemail = "ramdas.shukla@gtt.com", dostCategory = Categoris.fitnessdost, dostContact = "0246528975",
+			dostemail = "ramdas.shukla1@gtt.com", dostCategory = Categoris.fitnessdost, dostContact = "0246528975",
 			dostStatus = Status.active,
 			aboutDost = "Hi, this is Ramdas your Dost..! I am here to guide you regarding diet, fitness, health and all, just book and appointment with me I will call for help.";
 

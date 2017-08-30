@@ -13,10 +13,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class StudentProfile
 
 {
-	static int flag = 0;
+	static boolean flag = true;
 
 	void updateProfile(TestData student) {
-
+		
+		InterruptedException exit = new InterruptedException();
 		long starttime = System.currentTimeMillis(), endtime;
 		WebDriver driver = CreateDrivers.chrome();
 		WebDriverWait wait = new WebDriverWait(driver, 3000);
@@ -43,7 +44,7 @@ public class StudentProfile
 						} else {
 							driver.quit();
 							System.out.println("SMOKE FAIL- Unable to load welcome page.");
-							flag = 1;
+							flag = false;
 						}
 				}
 
@@ -80,7 +81,17 @@ public class StudentProfile
 							Thread.sleep(500);
 							System.out.println("Email- " + student.email);
 							driver.findElement(By.cssSelector("input[name='email']")).sendKeys(student.email);
+							Thread.sleep(1000);
 							driver.findElement(By.cssSelector("input[name='contact']")).clear();
+							
+							if(driver.findElement(By.xpath("//div[4]//span[3]")).getText().equalsIgnoreCase("Email address is already used by another user"))
+							{
+								System.out.println("Email id already registered please change Email ID");
+								throw exit;
+							}
+							
+							
+							
 							System.out.println("Contact- " + student.contact);
 							driver.findElement(By.cssSelector("input[name='contact']")).sendKeys(student.contact);
 
@@ -107,6 +118,17 @@ public class StudentProfile
 							} else {
 								driver.findElement(By.xpath("//label[1]/input")).click();
 							}
+							
+							Thread.sleep(500);
+							
+							if(driver.findElement(By.xpath("//div[5]//span[3]")).getText().equalsIgnoreCase("Contact number is already used by another user"))
+							{
+								System.out.println("Contact number is already used by another user please change contact number");
+								throw exit;
+							}
+							
+							
+							
 
 							// adding id type
 							System.out.println("Student ID Type- " + student.SID_type);
@@ -191,7 +213,7 @@ public class StudentProfile
 							else {
 								System.out.println("User unable to update profile.");
 								System.out.println("Smoke failed");
-								flag = 1;
+								flag = false;
 								System.out.println(driver.getCurrentUrl());
 							}
 
@@ -202,7 +224,7 @@ public class StudentProfile
 							System.out.println(element2.getText());
 							System.out.println(
 									"SMOKE FAIL- due to user unable to login with Invalid username and password.");
-							flag = 1;
+							flag = false;
 						}
 				}
 			}
@@ -210,18 +232,22 @@ public class StudentProfile
 
 		catch (InterruptedException e) {
 			// System.err.println(e);
-			System.out.println("exception occured to to thread synchronization failed");
+			System.out.println("Exiting Careerclap");
+			flag= false;
 		} catch (NoSuchElementException e) {
 			System.out
 					.println("you have used some driver elements, which is wrong in syntax or unreachable in browser.");
+			flag= false;
 			// TODO: handle exception
 		} catch (UnreachableBrowserException e) {
 			System.out.println("oops- fail to load website- check your network connection or firewall setting");
 			// TODO: handle exception
+			flag= false;
+
 		} finally {
 			driver.quit();
 			endtime = System.currentTimeMillis();
-			if (flag == 0) {
+			if (flag == true) {
 				System.out.println("total time for updating profile = " + (endtime - starttime) / 6000 + " SECONDS");
 			} else {
 				System.out.println(

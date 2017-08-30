@@ -14,7 +14,7 @@ public class AddDost {
 
 	static boolean addDost(WebDriver driver, String fname, String lname, String email, String number, String category,
 			String status, String profileDescription) throws InterruptedException {
-
+		InterruptedException exit= new InterruptedException();
 		long starttime = System.currentTimeMillis();
 		long endtime = 0;
 		WebDriverWait wait= new WebDriverWait(driver, 5000);
@@ -28,9 +28,21 @@ public class AddDost {
 			driver.findElement(By.xpath("//div/form//div[1]/div[2]/input")).sendKeys(lname);
 			Thread.sleep(500);
 			driver.findElement(By.xpath("//div/form//div[1]/div[3]/input")).sendKeys(email);
-			Thread.sleep(500);
+			Thread.sleep(1000);
+				
+			
 			driver.findElement(By.xpath("//div/form//div[3]/div[1]/input")).sendKeys(number);
-			Thread.sleep(500);
+			Thread.sleep(1000);
+			
+			
+			if(driver.findElement(By.xpath("//div[3]/span[2]")).getText().equalsIgnoreCase("Email address already Exist"))
+			{
+				System.out.println("Email id already registered please change Email ID");
+				throw exit;
+			}
+			
+			
+			
 			driver.findElement(By.xpath("//div/form//div[3]/div[2]/select")).click();
 			// selecting category
 
@@ -69,6 +81,19 @@ public class AddDost {
 			String tempcategory = "//div[2]/select/option[" + dostcategory + "]";
 			Thread.sleep(500);
 			driver.findElement(By.xpath(tempcategory)).click();
+			Thread.sleep(500);
+			
+			
+			if(driver.findElement(By.xpath("//div[3]/div[1]/span[2]")).getText().equalsIgnoreCase("Contact number already Exist"))
+			{
+				System.out.println("Contact number already registered please change contact");
+				throw exit;
+			}
+			
+			
+			
+			
+			
 
 			driver.findElement(By.xpath("//div/form//div[3]/div[3]/select")).click();
 			int doststatus = 0;
@@ -164,6 +189,12 @@ public class AddDost {
 			flag = false;
 		}
 
+		catch (InterruptedException e) {
+			// TODO: handle exception
+			System.out.println("Exiting careerclap");
+			flag = false;
+			
+		}
 		finally {
 			driver.quit();
 			endtime = System.currentTimeMillis();
