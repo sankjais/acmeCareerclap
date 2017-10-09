@@ -33,12 +33,12 @@ public class TestData
 	public static void main(String[] args)
 
 	{
-		 long starttime = System.currentTimeMillis(), endtime;
-		 TestData testdata = new TestData();
-		 GTTLogin login= new GTTLogin();
-		 UpdatePassword passwordUpdate = new UpdatePassword();
-		 StudentProfile profileUpdate = new StudentProfile();
-		 StudentLanding landingTest = new StudentLanding();
+		long starttime = System.currentTimeMillis(), endtime;
+		TestData testdata = new TestData();
+		GTTLogin login = new GTTLogin();
+		UpdatePassword passwordUpdate = new UpdatePassword();
+		StudentProfile profileUpdate = new StudentProfile();
+		StudentLanding landingTest = new StudentLanding();
 
 		try {
 
@@ -88,8 +88,8 @@ public class TestData
 
 				// login.validLogin(testdata);
 				// passwordUpdate.updatePassword(testdata);
-				 profileUpdate.updateProfile(testdata);
-				//landingTest.tiles(testdata);
+				// profileUpdate.updateProfile(testdata);
+				// landingTest.tiles(testdata);
 
 			}
 

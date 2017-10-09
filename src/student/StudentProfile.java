@@ -3,6 +3,7 @@ package student;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -197,6 +198,11 @@ public class StudentProfile
 
 							}
 							Thread.sleep(300);
+							
+							WebElement submitButton = driver.findElement(By.cssSelector("input[type='button']"));
+							((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();",submitButton);
+							Thread.sleep(1000);
+
 							driver.findElement(By.cssSelector("input[type='button']")).click();
 							Thread.sleep(6000);
 

@@ -8,13 +8,14 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.UnreachableBrowserException;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class UpdatePassword
 
 {
-	static int flag = 0;
+	static boolean flag = true;
 
 	void updatePassword(TestData student) throws InterruptedException {
 		long starttime = System.currentTimeMillis(), endtime;
@@ -44,7 +45,7 @@ public class UpdatePassword
 						} else {
 							driver.quit();
 							System.out.println("SMOKE FAIL- Unable to load welcome page.");
-							flag = 1;
+							flag = false;
 						}
 				}
 
@@ -85,11 +86,11 @@ public class UpdatePassword
 						System.out.println(element2.getText());
 						System.out
 								.println("SMOKE FAIL- due to user unable to login with Invalid username and password.");
-						flag = 1;
+						flag = false;
 					}
 				} else {
 					System.out.println("login page is not available , check your network or try after some time.");
-					flag = 1;
+					flag = false;
 				}
 			}
 
@@ -97,17 +98,20 @@ public class UpdatePassword
 
 		catch (NoSuchElementException e) {
 			System.out.println("you had used some drivers elements, which is wrong in syntax or not in browser.");
+			flag = false;
 			// TODO: handle exception
 		} catch (UnreachableBrowserException e) {
 			System.out.println("oops- fail to load website- check your network connection or firewall setting");
+			flag = false;
 			// TODO: handle exception
 		} catch (InvalidArgumentException e) {
 			System.out.println("Expected [object Undefined] undefined to be a string");
-			flag = 1;
+			flag = false;
 		} finally {
 			driver.quit();
 			endtime = System.currentTimeMillis();
-			if (flag == 0) {
+
+			if (flag == true) {
 				System.out
 						.println("total time for updating password is = " + (endtime - starttime) / 6000 + " SECONDS");
 			} else {

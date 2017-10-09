@@ -13,7 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BarclaysTest {
 
-	static int flag = 0;
+	static boolean flag = true;
 
 	public static void barclays(TestData student) {
 
@@ -45,7 +45,7 @@ public class BarclaysTest {
 						} else {
 							driver.quit();
 							System.out.println("SMOKE FAIL- Unable to load welcome page.");
-							flag = 1;
+							flag = false;
 						}
 				}
 
@@ -208,7 +208,7 @@ public class BarclaysTest {
 							System.out.println(element2.getText());
 							System.out.println(
 									"SMOKE FAIL- due to user unable to login with valid username and password.");
-							flag = 1;
+							flag = false;
 						}
 
 					Thread.sleep(1000);
@@ -218,16 +218,19 @@ public class BarclaysTest {
 		} catch (InterruptedException e) {
 			// System.err.println(e);
 			System.out.println("exception occured to to thread synchronization failed");
+			flag = false;
 		} catch (NoSuchElementException e) {
 			System.out
 					.println("you have used some driver elements, which is wrong in syntax or unreachable in browser.");
+			flag = false;
 		} catch (UnreachableBrowserException e) {
 			System.out.println("oops- fail to load website- check your network connection or firewall setting");
+			flag = false;
 		} finally {
 
 			driver.quit();
 			endtime = System.currentTimeMillis();
-			if (flag == 0) {
+			if (flag == true) {
 				System.out.println(
 						"total time for completing barclays test  = " + (endtime - starttime) / 6000 + " SECONDS");
 			} else {
