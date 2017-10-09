@@ -127,8 +127,10 @@ public class BarclaysTest {
 											wait.until(ExpectedConditions
 													.visibilityOfAllElementsLocatedBy(By.xpath("//li[2]/div//a[1]")));
 											driver.findElement(By.xpath("//li[2]/div//a[1]")).click();
-											wait.until(ExpectedConditions
-													.urlContains(student.barclaysAssessmentInstructions));
+											/*wait.until(ExpectedConditions
+													.urlContains(student.barclaysAssessmentInstructions));*/
+											Thread.sleep(2000);
+											
 											if (driver.getCurrentUrl().equals(student.barclaysAssessmentInstructions)) {
 												if (driver.getTitle().contains("CareerClap")) {
 													System.out.println(
@@ -192,6 +194,10 @@ public class BarclaysTest {
 
 													}
 												}
+											}
+											else{
+												System.out.println("Unable to proceed for barclays test instruction page.");
+												flag = false;
 											}
 
 										}

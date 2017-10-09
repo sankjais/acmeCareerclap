@@ -89,7 +89,7 @@ public class TestData
 				// login.validLogin(testdata);
 				// passwordUpdate.updatePassword(testdata);
 				// profileUpdate.updateProfile(testdata);
-				// landingTest.tiles(testdata);
+				 landingTest.tiles(testdata);
 
 			}
 
