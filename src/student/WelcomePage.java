@@ -1,7 +1,7 @@
 package student;
 
 public class WelcomePage
-
+//test
 {
 	static int dcode;
 
